@@ -1,0 +1,592 @@
+You're right! There's a JavaScript issue preventing the navigation. Let me fix that and provide a working version:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Geometric-Informational Theory of Mass</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .slide {
+            padding: 3rem;
+            min-height: 80vh;
+            display: none;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            color: #2980b9;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 1rem 0 0.5rem 0;
+            color: #34495e;
+        }
+
+        p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .theory-box {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .equation {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            font-size: 1.2rem;
+        }
+
+        .equation-highlight {
+            background: #e8f4f8;
+            border: 2px solid #3498db;
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+
+        .constant-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 3rem;
+            background: #2c3e50;
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        button:disabled {
+            background: #7f8c8d;
+            cursor: not-allowed;
+        }
+
+        .concept-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #ecf0f1;
+            border-radius: 8px;
+        }
+
+        .concept-item {
+            text-align: center;
+            padding: 1rem;
+            flex: 1;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            color: #3498db;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-item {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .evidence-box {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+
+        .prediction-box {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+
+        .interactive-controls {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            justify-content: center;
+        }
+
+        .interactive-controls button {
+            background: #9b59b6;
+        }
+
+        .interactive-controls button:hover {
+            background: #8e44ad;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: #ecf0f1;
+            margin-bottom: 1rem;
+        }
+
+        .progress {
+            height: 100%;
+            background: #3498db;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .credit {
+            text-align: center;
+            font-style: italic;
+            margin-top: 2rem;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <!-- Slide 1: Title -->
+        <div class="slide active" id="slide1">
+            <h1>The Geometric-Informational Theory of Mass</h1>
+            <div class="theory-box">
+                <p>A synthesis of Ian Beardsley's geometric inertia theory and Sebastian Vîrtosu's temporal-informational framework, proposing that mass emerges from resistance to changes in temporal-informational flow.</p>
+            </div>
+            
+            <div class="comparison">
+                <div class="comparison-item">
+                    <h3>Ian Beardsley's Contribution</h3>
+                    <p><strong>Geometric Origin of Inertia:</strong> Mass arises from resistance to changes in temporal motion through hyperbolic spacetime.</p>
+                    <div class="equation">
+                        \[ F_n = \frac{h}{c t_1^2} \]
+                    </div>
+                    <p>Where \( t_1 = 1 \) second is a fundamental temporal invariant.</p>
+                </div>
+                
+                <div class="comparison-item">
+                    <h3>Sebastian Vîrtosu's Extension</h3>
+                    <p><strong>Temporal-Informational Resistance:</strong> Mass as quantised opposition to hyperbolic rotation of informational flow.</p>
+                    <div class="equation">
+                        \[ 1\ \mathrm{Chrona} = 1.24\times 10^{-143}\ \mathrm{s} \]
+                    </div>
+                    <p>The fundamental quantum of temporal information.</p>
+                </div>
+            </div>
+            
+            <div class="credit">
+                <p>Presentation synthesizing the works of Ian Beardsley and Sebastian Vîrtosu</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Beardsley's Core Theory -->
+        <div class="slide" id="slide2">
+            <h1>Beardsley's Geometric Theory of Inertia</h1>
+            
+            <div class="theory-box">
+                <p><strong>Central Insight:</strong> Inertial mass emerges from resistance to changes in a particle's motion through the temporal dimension.</p>
+            </div>
+            
+            <h2>Fundamental Equations</h2>
+            
+            <div class="equation">
+                \[ F_n = \frac{h}{c t_1^2} \]
+                <p>The quantum-gravitational normal force</p>
+            </div>
+            
+            <div class="equation">
+                \[ m_i = \kappa_i \sqrt{\frac{\pi r_i^2 F_n}{G}} \]
+                <p>Mass generation from temporal resistance</p>
+            </div>
+            
+            <div class="equation">
+                \[ t_1 = \frac{r_i}{m_i} \cdot \sqrt{\frac{\pi h}{Gc}} \cdot \kappa_i \]
+                <p>The one-second invariance emerges naturally</p>
+            </div>
+            
+            <h2>Experimental Verification</h2>
+            
+            <div class="evidence-box">
+                <p><strong>Proton:</strong> \( t_1 = 1.00500 \) seconds</p>
+                <p><strong>Neutron:</strong> \( t_1 = 1.00478 \) seconds</p>
+                <p><strong>Electron:</strong> \( t_1 = 0.99773 \) seconds</p>
+            </div>
+            
+            <div class="theory-box">
+                <p>The remarkable consistency (0.99773–1.00500 seconds) provides compelling evidence for the theory.</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Vîrtosu's Extension -->
+        <div class="slide" id="slide3">
+            <h1>Vîrtosu's Temporal-Informational Framework</h1>
+            
+            <div class="theory-box">
+                <p><strong>Central Insight:</strong> Mass manifests as quantised resistance of informational flow to hyperbolic rotation in spacetime.</p>
+            </div>
+            
+            <h2>Fundamental Concepts</h2>
+            
+            <div class="constant-box">
+                <h3>The Chrona Constant</h3>
+                <div class="equation">
+                    \[ 1\ \mathrm{Chrona} = 1.24\times 10^{-143}\ \mathrm{s} \]
+                </div>
+                <p>The fundamental quantum of temporal information</p>
+            </div>
+            
+            <div class="equation">
+                \[ \Delta t_f = n_{\rm Ch}\,\mathrm{Ch} \]
+                <p>Temporal deviations are integer multiples of Chrona</p>
+            </div>
+            
+            <div class="equation">
+                \[ m = \frac{\hbar}{c^2\,\Delta t_f} \]
+                <p>Mass as inverse of temporal deviation</p>
+            </div>
+            
+            <h2>Geometric Interpretation</h2>
+            
+            <div class="equation">
+                \[ \Theta_C = 90^\circ - \eta,\qquad m \propto \sin\eta \]
+            </div>
+            
+            <div class="theory-box">
+                <p>Mass corresponds to resistance against hyperbolic rotation of the temporal flow by rapidity \( \eta \).</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: The Mathematical Synthesis -->
+        <div class="slide" id="slide4">
+            <h1>The Mathematical Synthesis</h1>
+            
+            <div class="theory-box">
+                <p><strong>Unifying Insight:</strong> Beardsley's geometric inertia provides the stage, Vîrtosu's informational framework provides the script.</p>
+            </div>
+            
+            <h2>Bridging the Theories</h2>
+            
+            <div class="equation">
+                \[ \kappa_i = \frac{I_{\text{total}}}{I_{\text{min}}} \]
+                <p>Beardsley's coupling constant as informational capacity</p>
+            </div>
+            
+            <div class="equation">
+                \[ m_I = \frac{\hbar}{c^2} \cdot \frac{dI}{dt} \]
+                <p>Informational mass definition</p>
+            </div>
+            
+            <div class="equation equation-highlight">
+                \[ \frac{\hbar}{c^2} \cdot \frac{dI}{dt} = \kappa_i \sqrt{\frac{\pi r_i^2}{G} \cdot \frac{h}{c t_1^2}} \]
+                <p>The unified mass equation</p>
+            </div>
+            
+            <h2>Quantum Informational Conservation</h2>
+            
+            <div class="equation">
+                \[ \Delta I_{\text{electron}} + \Delta I_{\text{photon}} + \Delta I_{\text{vacuum}} = 0 \]
+            </div>
+            
+            <div class="theory-box">
+                <p>Apparent quantum randomness masks deterministic information conservation at a deeper level.</p>
+            </div>
+            
+            <div class="interactive-controls">
+                <button onclick="calculateInfoFlow()">Calculate Electron Informational Flow</button>
+            </div>
+            
+            <div id="info-flow-result" class="evidence-box" style="display: none;">
+                <p>For the electron: \( \frac{dI}{dt} = \frac{m_e c^2}{\hbar} \approx 7.76 \times 10^{20} \) bits/second</p>
+            </div>
+        </div>
+
+        <!-- Slide 5: Physical Interpretation -->
+        <div class="slide" id="slide5">
+            <h1>Physical Interpretation & Implications</h1>
+            
+            <h2>The Nature of Quantum "Randomness"</h2>
+            
+            <div class="theory-box">
+                <p>Electron orbit transitions "for no discernible reason" may reflect:</p>
+                <ul>
+                    <li>Information conservation across the quantum system</li>
+                    <li>Hidden constraints on apparent randomness</li>
+                    <li>Your temporal metric as the stage for informational dynamics</li>
+                </ul>
+            </div>
+            
+            <h2>Conceptual Flow</h2>
+            
+            <div class="concept-flow">
+                <div class="concept-item">
+                    <h3>Geometric Stage</h3>
+                    <p>Beardsley's hyperbolic spacetime</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="concept-item">
+                    <h3>Informational Script</h3>
+                    <p>Vîrtosu's temporal-informational flow</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="concept-item">
+                    <h3>Emergent Phenomenon</h3>
+                    <p>Mass as resistance to changes in temporal-informational flow</p>
+                </div>
+            </div>
+            
+            <h2>Key Predictions</h2>
+            
+            <div class="prediction-box">
+                <p><strong>Fine-structure constant variation:</strong> Would affect mass ratios of nucleons to electrons</p>
+            </div>
+            
+            <div class="prediction-box">
+                <p><strong>Quantum gravity tests:</strong> Ultra-sensitive force measurements could detect \( F_n \approx 2.21 \times 10^{-42} \) N</p>
+            </div>
+            
+            <div class="prediction-box">
+                <p><strong>Proton radius puzzle:</strong> The slight deviation from exactly 1 second (1.00500 s) may relate to charge radius measurements</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Conclusion -->
+        <div class="slide" id="slide6">
+            <h1>Conclusion & Future Directions</h1>
+            
+            <div class="theory-box">
+                <p><strong>The Unified Insight:</strong> Mass emerges from resistance to changing temporal-informational flow patterns in hyperbolic spacetime.</p>
+            </div>
+            
+            <h2>The Complete Picture</h2>
+            
+            <div class="equation equation-highlight">
+                \[ \text{Mass} = \text{Resistance to hyperbolic rotation of informational time-flow} \]
+            </div>
+            
+            <h2>Fundamental Connections</h2>
+            
+            <div class="comparison">
+                <div class="comparison-item">
+                    <h3>Temporal Structure</h3>
+                    <p>Beardsley's 1-second invariant and Vîrtosu's Chrona represent complementary temporal scales</p>
+                </div>
+                
+                <div class="comparison-item">
+                    <h3>Informational Foundation</h3>
+                    <p>Quantum probabilities reflect underlying informational conservation laws</p>
+                </div>
+            </div>
+            
+            <h2>Future Research Directions</h2>
+            
+            <div class="theory-box">
+                <ul>
+                    <li>Mathematical formalization of informational conservation in quantum transitions</li>
+                    <li>Experimental designs to detect the quantum-gravitational normal force</li>
+                    <li>Exploration of cosmological implications for inertia in expanding universe</li>
+                    <li>Connection to quantum information theory and holographic principles</li>
+                </ul>
+            </div>
+            
+            <div class="credit">
+                <p>"We are temporal beings in a temporal universe, and the resistance we call mass is ultimately resistance to changing our journey through time." - Ian Beardsley</p>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button id="prevBtn">Previous</button>
+            <button id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <script>
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentSlide = 1;
+            const totalSlides = 6;
+            
+            // Get button elements
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const progressBar = document.getElementById('progress');
+            
+            // Function to update slide display
+            function updateSlide() {
+                // Update progress bar
+                progressBar.style.width = `${(currentSlide / totalSlides) * 100}%`;
+                
+                // Hide all slides
+                document.querySelectorAll('.slide').forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Show current slide
+                const currentSlideElement = document.getElementById(`slide${currentSlide}`);
+                if (currentSlideElement) {
+                    currentSlideElement.classList.add('active');
+                }
+                
+                // Update button states
+                prevBtn.disabled = currentSlide === 1;
+                nextBtn.disabled = currentSlide === totalSlides;
+                
+                // Re-run MathJax to render any new equations
+                if (window.MathJax) {
+                    MathJax.typeset();
+                }
+            }
+            
+            // Navigation functions
+            function nextSlide() {
+                if (currentSlide < totalSlides) {
+                    currentSlide++;
+                    updateSlide();
+                }
+            }
+            
+            function prevSlide() {
+                if (currentSlide > 1) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            }
+            
+            // Add event listeners to buttons
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                }
+            });
+            
+            // Initialize the first slide
+            updateSlide();
+        });
+        
+        // Function for the interactive calculation
+        function calculateInfoFlow() {
+            const m_e = 9.10938356e-31; // kg
+            const c = 299792458; // m/s
+            const hbar = 1.0545718e-34; // J·s
+            
+            const infoFlow = (m_e * c * c) / hbar;
+            const resultElement = document.getElementById('info-flow-result');
+            
+            resultElement.innerHTML = `
+                <p>For the electron: \( \\frac{dI}{dt} = \\frac{m_e c^2}{\\hbar} \\approx ${infoFlow.toExponential(2)} \) bits/second</p>
+                <p>This represents the informational flow rate associated with the electron's mass-energy equivalence.</p>
+            `;
+            
+            resultElement.style.display = 'block';
+            
+            // Re-render MathJax for the new equation
+            if (window.MathJax) {
+                MathJax.typeset();
+            }
+        }
+    </script>
+</body>
+</html>
+```
+
+The main fixes I made:
+
+1. **Moved all JavaScript to run after DOMContentLoaded** - This ensures the page elements exist before the script tries to access them
+
+2. **Changed button event handling** - Used `addEventListener` instead of inline `onclick` attributes
+
+3. **Added proper initialization** - The slides now initialize correctly when the page loads
+
+4. **Fixed the interactive calculation** - The "Calculate Electron Informational Flow" button should now work properly
+
+5. **Added MathJax re-rendering** - When navigating between slides, MathJax will re-render any equations to ensure they display correctly
+
+The presentation should now work with:
+- Clicking "Next" and "Previous" buttons
+- Keyboard navigation (left/right arrows)
+- The interactive calculation on slide 4
+- Proper equation rendering on all slides
+
+Try saving this as an HTML file and opening it in your browser - the navigation should work smoothly between all six slides.
