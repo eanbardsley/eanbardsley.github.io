@@ -103,7 +103,7 @@ text-align: center;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>An Interesting Construct In Nature | Ian Beardsley</title>
+    <title>An Interesting Construct In Nature | Ian Beardsley (Updated)</title>
     <!-- MathJax 3 (TeX-AMS_CHTML) for high-quality equation rendering -->
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async>
         MathJax = {
@@ -113,7 +113,6 @@ text-align: center;
                 packages: { '[+]': ['ams', 'text', 'boldsymbol'] },
                 tags: 'ams',
                 macros: {
-                    // optional: ensure some often-used macros are defined
                     hbar: "{\\hbar}",
                     alpha: "{\\alpha}",
                     phi: "{\\phi}",
@@ -123,11 +122,6 @@ text-align: center;
             options: {
                 ignoreHtmlClass: 'no-mathjax',
                 processHtmlClass: 'math'
-            },
-            startup: {
-                pageReady: () => {
-                    return MathJax.startup.defaultPageReady();
-                }
             }
         };
     </script>
@@ -203,15 +197,13 @@ text-align: center;
             margin-bottom: 1rem;
             text-align: justify;
         }
-        .math {
+        .math, .equation {
             overflow-x: auto;
             padding: 0.4rem 0;
         }
         .equation {
-            margin: 1.2rem 0;
             text-align: center;
-            overflow-x: auto;
-            padding: 0.4rem 0;
+            margin: 1.2rem 0;
         }
         blockquote {
             margin: 1rem 1.5rem;
@@ -328,7 +320,7 @@ text-align: center;
     \hbar_{\odot} = (1.03351\ \text{s})(2.7396\times10^{33}\ \text{J}) = 2.8314\times10^{33}\ \text{J}\cdot\text{s}
     \]</div>
     <div class="equation">\[
-    KE_{\text{Earth}} = \frac12 (5.972\times10^{24}\ \text{kg})(30,290\ \text{m/s})^2 = 2.7396\times10^{33}\ \text{J}
+    KE_{\text{Earth}}=\frac12 (5.972\times10^{24}\ \text{kg})(30,290\ \text{m/s})^2 = 2.7396\times10^{33}\ \text{J}
     \]</div>
     <p>That is, we use the kinetic energy of the Earth. The quantum analog for Earth is given by the ground state equation above, the Earth orbit is given by:</p>
     <div class="equation">\[
@@ -340,8 +332,12 @@ text-align: center;
     <h2>The Interesting Construct</h2>
     <p>Not only is the Earth rotation right to produce a 1‑second invariant when using base 60 counting, but its mass and size is right for a gravitational acceleration \(g\) at its surface that produces close to a meter, when used with such a 1‑second invariant. Further, this involves the eclipse ratio for the Earth/Moon/Sun System (400) in that:</p>
     <div class="equation">\[
+    (24\ \text{hours})(60\ \text{min})(60\ \text{sec}) = 86,400\ \text{seconds/day}
+    \]</div>
+    <div class="equation">\[
     (400)(6)(6)(6) = (86,400\ \text{seconds})/\text{day}
     \]</div>
+    <p>Two smallest primes: 2, 3: \(2 \times 3 = 6\) (fundamental to doing arithmetic). Six is the regular hexagon used by bees to make their honeycombs because the six‑sided regular hexagon tessellates and has its radii equal to its sides, creating mathematical advantage.</p>
     <p>The eclipse is near perfect. The condition is</p>
     <div class="equation">\[
     \frac{R_{\odot}}{R_{\text{moon}}} = \frac{r_{\text{earth}}}{r_{\text{moon}}} = 400
@@ -386,7 +382,7 @@ text-align: center;
     <div class="equation">\[
     \frac{F_n}{F_{\text{Planck}}}\frac{1}{t_P^2} = 6.2834743\ \text{s}^{-2}
     \]</div>
-    <p>That number is \(2\pi\). We obtain the final equation:</p>
+    <p>That number is \(2\pi\). We have the final equation:</p>
     <div class="equation">\[
     t_1 = \sqrt{2\pi\,\frac{F_{\text{Planck}}}{F_n}}\;\cdot\; t_P = 1.00\ \text{seconds}
     \]</div>
@@ -403,11 +399,17 @@ text-align: center;
     F_n = F_{\text{Planck}}\cdot t_P^2\cdot\frac{d\omega}{dt}
     \]</div>
     <div class="equation">\[
-    \frac{F_n}{F_{\text{Planck}}}\cdot\frac{1}{t_p^2}\int_{0}^{1\ \text{second}} dt = \omega_1,\qquad \omega_1 = \frac{2\pi}{\text{second}}
+    \frac{F_n}{F_{\text{Planck}}}\cdot\frac{1}{t_P^2}\int_{0}^{1\ \text{second}} dt = \omega_1
     \]</div>
     <div class="equation">\[
-    \frac{F_n}{F_{\text{Planck}}}\cdot\frac{t_1}{t_p^2}\int_{0}^{1\ \text{second}} dt = \theta_1,\qquad 
-    \frac{F_n}{F_{\text{Planck}}}\cdot\frac{t_1^2}{t_P^2} = \theta_1,\quad \theta_1 = 2\pi
+    \omega_1 = \frac{2\pi}{\text{second}}
+    \]</div>
+    <p>Integrating one more time gives the angle over 1‑second:</p>
+    <div class="equation">\[
+    \frac{F_n}{F_{\text{Planck}}}\cdot\frac{t_1}{t_P^2}\int_{0}^{1\ \text{second}} dt = \theta_1
+    \]</div>
+    <div class="equation">\[
+    \frac{F_n}{F_{\text{Planck}}}\cdot\frac{t_1^2}{t_P^2} = \theta_1,\qquad \theta_1 = 2\pi
     \]</div>
     <p>Thus, the normal force \(F_n\) is the force that, when scaled by the Planck force and Planck time, gives a full \(2\pi\) angular displacement in one second. This geometric origin explains why \(t_1 = 1\ \text{second}\) appears as a natural invariant. We see the second arises naturally from Planck‑scale physics through a factor of \(\theta_1 = 2\pi\).</p>
     <blockquote>
@@ -489,7 +491,7 @@ text-align: center;
     <div class="equation">\[
     r_p = (0.618)\cdot\frac{6.62607\times10^{-34}}{(299,792,458)(1.67262\times10^{-27})} = 0.8166\times10^{-15}\ \text{m}
     \]</div>
-    <p>The CODATA value from the PRad experiment in 2019 gives \(r_p = 0.831\ \text{fm} \pm 0.014\ \text{fm}\) with lower bound \(r_p = 0.817\times10^{-15}\ \text{m}\), which is almost exactly what we obtained. For the proton radius in our computations we use [3]: “A measurement of the atomic hydrogen Lamb shift and the proton charge radius” by Bezginov, N. et al. (<em>Science</em>, Vol. 365, Issue 6457, pp. 1007‑1012, 2019) with value \(r_p = 0.833\ \text{fm} \pm 0.012\ \text{fm}\).</p>
+    <p>The CODATA value from the PRad experiment in 2019 gives \(r_p = 0.831\ \text{fm} \pm 0.014\ \text{fm}\) with lower bound \(r_p = 0.817\times10^{-15}\ \text{m}\), which is almost exactly what we obtained. For the proton radius in our computations we use [3]: “A measurement of the atomic hydrogen Lamb shift and the proton charge radius” by Bezginov, N. et al. (<em>Science</em>, Vol. 365, Issue 6457, pp. 1007‑1012, 2019) with value \(r_p = 0.833\ \text{fm} \pm 0.012\ \text{fm}\).</p>
 
     <!-- References -->
     <h2>References</h2>
@@ -502,14 +504,11 @@ text-align: center;
     </ol>
     <footer>
         <span>© Ian Beardsley — April 2026</span><br>
-        <span style="font-size:0.75rem;">Built with MathJax | A construct bridging particle physics, cosmology, and the origin of the second.</span>
+        <span style="font-size:0.75rem;">Built with MathJax | A construct bridging particle physics, cosmology, and the origin of the second. (Updated version)</span>
     </footer>
 </div>
 </body>
 </html>
-```
-
-
 
 
 <P>******************************************************************************************</P>
