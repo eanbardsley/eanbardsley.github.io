@@ -88,6 +88,432 @@ text-align: center;
 </head>
 <body>
 
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>An Interesting Construct In Nature | Ian Beardsley</title>
+    <!-- MathJax 3 (TeX-AMS_CHTML) for high-quality equation rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']],
+                packages: { '[+]': ['ams', 'text', 'boldsymbol'] },
+                tags: 'ams',
+                macros: {
+                    // optional: ensure some often-used macros are defined
+                    hbar: "{\\hbar}",
+                    alpha: "{\\alpha}",
+                    phi: "{\\phi}",
+                    kappa: "{\\kappa}"
+                }
+            },
+            options: {
+                ignoreHtmlClass: 'no-mathjax',
+                processHtmlClass: 'math'
+            },
+            startup: {
+                pageReady: () => {
+                    return MathJax.startup.defaultPageReady();
+                }
+            }
+        };
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #fafaf7;
+            color: #1e1e2a;
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
+            line-height: 1.55;
+            padding: 2rem 1rem;
+        }
+        .paper-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+            border-radius: 18px;
+            padding: 2.2rem 2rem;
+            transition: all 0.2s;
+        }
+        @media (max-width: 680px) {
+            .paper-container {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            border-left: 5px solid #2c7da0;
+            padding-left: 1.2rem;
+            margin-bottom: 0.25rem;
+            font-family: 'Segoe UI', 'Roboto', Georgia, serif;
+        }
+        .author {
+            font-size: 1.15rem;
+            color: #2c3e4e;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            padding-left: 1.7rem;
+            font-style: normal;
+            font-weight: 400;
+            border-bottom: 1px solid #e0e4e8;
+            padding-bottom: 0.8rem;
+        }
+        .date {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #5f6c7a;
+            margin-bottom: 1.8rem;
+            padding-left: 1.7rem;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 1.6rem 0 0.8rem 0;
+            font-weight: 500;
+            color: #1f5068;
+            border-bottom: 1px solid #d4dee5;
+            padding-bottom: 0.2rem;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.5rem 0;
+            font-weight: 500;
+            color: #2c6e8f;
+        }
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .math {
+            overflow-x: auto;
+            padding: 0.4rem 0;
+        }
+        .equation {
+            margin: 1.2rem 0;
+            text-align: center;
+            overflow-x: auto;
+            padding: 0.4rem 0;
+        }
+        blockquote {
+            margin: 1rem 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid #9bb7c9;
+            font-style: normal;
+            background: #f8f9fc;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+        }
+        ul, ol {
+            margin: 0.8rem 0 1rem 2rem;
+        }
+        li {
+            margin-bottom: 0.3rem;
+        }
+        .ref-list {
+            margin-top: 1rem;
+            list-style-type: decimal;
+            padding-left: 1.8rem;
+        }
+        .ref-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.92rem;
+        }
+        hr {
+            margin: 2rem 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, #ccc, transparent);
+        }
+        .highlight {
+            background: #eef4fa;
+            border-radius: 12px;
+            padding: 0.2rem 0.4rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #6c7a89;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+        }
+        a {
+            color: #1f6392;
+            text-decoration: none;
+            border-bottom: 1px dotted #9bb7c9;
+        }
+        a:hover {
+            color: #0e3e5c;
+            border-bottom: 1px solid;
+        }
+        .small-note {
+            font-size: 0.9rem;
+            background: #fef7e0;
+            padding: 0.5rem 1rem;
+            border-radius: 14px;
+            margin: 1rem 0;
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .paper-container {
+                box-shadow: none;
+                padding: 0.5rem;
+            }
+            .equation {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="paper-container">
+    <h1>An Interesting Construct In Nature</h1>
+    <div class="author">Ian Beardsley</div>
+    <div class="date">April 10, 2026</div>
+
+    <!-- Introduction -->
+    <h2>Introduction</h2>
+    <p>In order to introduce this interesting construct found in Nature, we must first outline my discovery of a 1‑second invariant connected to the atoms particles and the Solar System. The interesting construct will follow.</p>
+    <p>The discovery finds an extraordinary harmony between the base 60 counting system and division of time by the ancient Sumerians, 24 hour day, 60 minute hour, 60 second minute where 24 = 2(12), 12 evenly divisible by 1, 2, 3, 4, 6, and 60 evenly divisible by 1, 2, 3, 4, 5, 6, 12, 15, 30 (archaeology), perfect eclipses, Earth size, mass, and gravity (planetary science), and the radius and mass of the particles that make the atom: proton, electron, and neutron (particle physics), among other factors noted in the paper.</p>
+    <p>I have found a one‑second invariant that predicts the proton, electron, and neutron [1]:</p>
+    <div class="equation">\[
+    t_1 = \frac{r_i}{m_i} \cdot \sqrt{\frac{\pi h}{Gc}} \cdot \kappa_i
+    \]</div>
+    <div class="equation">\[
+    t_1 = 1\ \text{second}
+    \]</div>
+    <p>\(\alpha = 1/137\) is the fine structure constant.<br>
+    \(\kappa_p = \frac{1}{3\alpha^2}\) is the coupling constant for the proton.<br>
+    \(\kappa_n = \frac{1}{3\alpha^2}\) is the coupling constant for the neutron.<br>
+    \(\kappa_e = 1\) is the coupling constant for the electron.<br>
+    \(r_i\) is the radius of the particle, \(m_i\) its mass, \(G\) universal gravitational constant, \(h\) Planck constant, \(c\) speed of light.</p>
+
+    <p>I have found the same one‑second invariant in a quantum analog for the Solar System:</p>
+    <div class="equation">\[
+    \frac{\hbar_{\odot}^2}{G M_m^3}\frac{1}{c}=\frac{3.0281\times10^8\,\text{m}}{299,792,458\,\text{m/s}}=1.010\ \text{seconds}\approx 1\ \text{second}
+    \]</div>
+    <p>This I use as the ground state. \(M_m\) is the mass of the Moon. \(\hbar_{\odot}\) is a Solar system Planck‑type constant given by:</p>
+    <div class="equation">\[
+    \hbar_{\odot} = (1\ \text{second})\, KE_{\text{earth}}
+    \]</div>
+    <p>We say \(\hbar_{\odot}\) is given by:</p>
+    <div class="equation">\[
+    1.03351\ \text{s} = \frac{1}{3}\cdot\frac{h}{\alpha^2 c}\sqrt{\frac{2}{3}\cdot\frac{\pi r_p}{G m_p^3}}
+    \]</div>
+    <div class="equation">\[
+    \hbar_{\odot} = (1.03351\ \text{s})(2.7396\times10^{33}\ \text{J}) = 2.8314\times10^{33}\ \text{J}\cdot\text{s}
+    \]</div>
+    <div class="equation">\[
+    KE_{\text{Earth}} = \frac12 (5.972\times10^{24}\ \text{kg})(30,290\ \text{m/s})^2 = 2.7396\times10^{33}\ \text{J}
+    \]</div>
+    <p>That is, we use the kinetic energy of the Earth. The quantum analog for Earth is given by the ground state equation above, the Earth orbit is given by:</p>
+    <div class="equation">\[
+    r_n = \frac{2\hbar_{\odot}^2}{G M_m^3}\cdot\frac{R_{\odot}}{R_m}\cdot\frac{1}{\sqrt{n}}
+    \]</div>
+    <p>\(R_{\odot}\) is the radius of the Sun, \(R_m\) the radius of the Moon. \(n=3\) is the Earth orbit.</p>
+
+    <!-- The Interesting Construct -->
+    <h2>The Interesting Construct</h2>
+    <p>Not only is the Earth rotation right to produce a 1‑second invariant when using base 60 counting, but its mass and size is right for a gravitational acceleration \(g\) at its surface that produces close to a meter, when used with such a 1‑second invariant. Further, this involves the eclipse ratio for the Earth/Moon/Sun System (400) in that:</p>
+    <div class="equation">\[
+    (400)(6)(6)(6) = (86,400\ \text{seconds})/\text{day}
+    \]</div>
+    <p>The eclipse is near perfect. The condition is</p>
+    <div class="equation">\[
+    \frac{R_{\odot}}{R_{\text{moon}}} = \frac{r_{\text{earth}}}{r_{\text{moon}}} = 400
+    \]</div>
+    <p>Close to a meter is produced by the half period of a pendulum (1 swing) that is the 1‑second invariant. This was discovered by Christiaan Huygens, and he proposed defining the meter with it. He found since \(g\approx \pi^2\ \text{m/s}^2\), that</p>
+    <div class="equation">\[
+    2\ \text{seconds} \approx 2\pi\sqrt{\frac{1\ \text{meter}}{g}}
+    \]</div>
+
+    <!-- Further Considerations -->
+    <h2>Further Considerations</h2>
+    <p>We further find the kinetic energy of the Moon to that of the Earth maps the 24‑hour day into 1‑second.</p>
+    <div class="equation">\[
+    \frac{KE_{\text{moon}}}{KE_{\text{earth}}}(24\ \text{hours})\cos(\theta) = 1\ \text{second}
+    \]</div>
+    <p>Where \(\theta = 23.5^\circ\) is the inclination of the Earth to its orbit. We also have for the atom's particles</p>
+    <div class="equation">\[
+    m_p = \kappa_p \cdot \sqrt{\frac{\pi r_p^2 F_n}{G}}, \qquad F_n = \frac{h}{c t_1^2},\quad t_1 = 1\ \text{second}
+    \]</div>
+    <p>It is suggested that when we push on a particle we rotate some of its temporal velocity into spatial velocity and resistance to this rotation is experienced as the normal force pushing back creating inertia that we experience as mass. \(F_n\) is this normal force.</p>
+    <p>The normal force has a relationship to the Planck force, the maximum gravity for the minimum mass. It links the normal force to a full rotation (\(2\pi\)). We have the normal force</p>
+    <div class="equation">\[
+    F_n = \frac{h}{c t_1^2} = 2.21022\times10^{-42}\ \text{N}
+    \]</div>
+    <p>We have the Planck force for gravity</p>
+    <div class="equation">\[
+    F_{\text{Planck}} = G\frac{m_P^2}{l_P^2} = (6.674\times10^{-11})\frac{(2.176434\times10^{-8}\ \text{kg})^2}{(1.616255\times10^{-35}\ \text{m})^2} = 1.21020\times10^{44}\ \text{N}
+    \]</div>
+    <p>Where \(m_P\) is the Planck mass, and \(l_P\) the Planck length:</p>
+    <div class="equation">\[
+    m_P = \sqrt{\frac{\hbar c}{G}} = 2.176434\times10^{-8}\ \text{kg},\qquad l_{\text{Planck}} = \sqrt{\frac{\hbar G}{c^3}} = 1.616255\times10^{-35}\ \text{m}
+    \]</div>
+    <p>Planck time is</p>
+    <div class="equation">\[
+    t_{\text{Planck}} = \sqrt{\frac{\hbar G}{c^5}} = 5.391247\times10^{-44}\ \text{s}
+    \]</div>
+    <p>We form the ratios between the normal force and Planck force:</p>
+    <div class="equation">\[
+    \frac{F_n}{F_{\text{Planck}}} = 1.826326\times10^{-86}
+    \]</div>
+    <p>Divide by Planck time squared and we have</p>
+    <div class="equation">\[
+    \frac{F_n}{F_{\text{Planck}}}\frac{1}{t_P^2} = 6.2834743\ \text{s}^{-2}
+    \]</div>
+    <p>That number is \(2\pi\). We obtain the final equation:</p>
+    <div class="equation">\[
+    t_1 = \sqrt{2\pi\,\frac{F_{\text{Planck}}}{F_n}}\;\cdot\; t_P = 1.00\ \text{seconds}
+    \]</div>
+    <p>From the Planck units we have \(F_{\text{Planck}} = G\frac{m_P^2}{l_P^2} = \frac{c^4}{G}\), so it can be written:</p>
+    <div class="equation">\[
+    t_1 = \sqrt{2\pi\,\frac{c^4}{G F_n}}\;\cdot\; t_P
+    \]</div>
+    <p>We can write</p>
+    <div class="equation">\[
+    F_n = 2\pi\,F_{\text{Planck}}\cdot\frac{t_P^2}{t_1^2}
+    \]</div>
+    <p>\(2\pi\) is a full rotation, so we can define an angular frequency \(\omega\):</p>
+    <div class="equation">\[
+    F_n = F_{\text{Planck}}\cdot t_P^2\cdot\frac{d\omega}{dt}
+    \]</div>
+    <div class="equation">\[
+    \frac{F_n}{F_{\text{Planck}}}\cdot\frac{1}{t_p^2}\int_{0}^{1\ \text{second}} dt = \omega_1,\qquad \omega_1 = \frac{2\pi}{\text{second}}
+    \]</div>
+    <div class="equation">\[
+    \frac{F_n}{F_{\text{Planck}}}\cdot\frac{t_1}{t_p^2}\int_{0}^{1\ \text{second}} dt = \theta_1,\qquad 
+    \frac{F_n}{F_{\text{Planck}}}\cdot\frac{t_1^2}{t_P^2} = \theta_1,\quad \theta_1 = 2\pi
+    \]</div>
+    <p>Thus, the normal force \(F_n\) is the force that, when scaled by the Planck force and Planck time, gives a full \(2\pi\) angular displacement in one second. This geometric origin explains why \(t_1 = 1\ \text{second}\) appears as a natural invariant. We see the second arises naturally from Planck‑scale physics through a factor of \(\theta_1 = 2\pi\).</p>
+    <blockquote>
+        <em>One second is the time it takes for the ratio \(\frac{F_n}{F_{\text{Planck}}}\) to accumulate a full \(2\pi\) of angular phase, closing a loop in the temporal dimension – out of the temporal and back in again.</em>
+    </blockquote>
+    <p>This is reminiscent of the idea in some quantum gravity or pre‑geometric models that time emerges from a cyclic variable. The equation may be hinting at exactly that: the normal force (which was previously linked to inertia and mass) is the restoring force that makes the cycle close after exactly one second.</p>
+    <p>Considering the Huygens Pendulum:</p>
+    <div class="equation">\[
+    2\ \text{seconds} \approx 2\pi\sqrt{\frac{1\ \text{meter}}{g}}
+    \]</div>
+    <p>We have:</p>
+    <div class="equation">\[
+    2\ \text{seconds} \approx \frac{F_n}{F_{\text{Planck}}}\cdot\frac{t_1^2}{t_P^2}\sqrt{\frac{1\ \text{meter}}{g}}
+    \]</div>
+    <p>It is really worth noting in this kind of work, there is no such thing as a precise measurement. You can’t define the exact radius of the Sun, its atmosphere gets thinner and thinner, may end out near a planet, and where it ends you can’t say exactly because it is plasma. Nature, I think, uses approximations, and they are good, and probably have a function. You need room to jiggle, a certain amount of play. I think sometimes Nature uses the ratio of the perimeter of a regular hexagon to its diameter — which is 3, as opposed to the irrational \(\pi\). As Alan Alda said in a Woody Allen movie when describing the art of humor: “If it bends, it is funny; if it breaks, it is not funny”. So when we say the eclipse ratio is 400, not 400.5, we are talking of this kind of functionality.</p>
+
+    <!-- Demonstrating That Our Equations Are Correct -->
+    <h2>Demonstrating That Our Equations Are Correct</h2>
+    <p>We know that our equations are correct because if the phenomenon of mass is generated by the hyperbolic rotation of \(F_n\) when we push on a particle, out of the temporal into the spatial, giving some of its temporal velocity to the spatial, creating a push back we experience as mass, then to have</p>
+    <div class="equation">\[
+    F_n = \frac{h}{c t_1^2}
+    \]</div>
+    <p>We must have \(t_1 = 1\) second. Thus having derived the 1‑second invariant</p>
+    <div class="equation">\[
+    t_1 = \frac{r_i}{m_i} \cdot \sqrt{\frac{\pi h}{Gc}} \cdot \kappa_i
+    \]</div>
+    <p>Which means</p>
+    <div class="equation">\[
+    m_p = \kappa_p \cdot \sqrt{\frac{\pi r_p^2 F_n}{G}}
+    \]</div>
+    <p>Because the resistance to rotation is measured by the stiffness of space (\(G\)) and the cross-sectional surface area of the particle exposed to \(F_n\), which is \(\pi r_p^2\) (or in general \(A_i = \pi r_i^2\)). In general we have</p>
+    <div class="equation">\[
+    m_i = \kappa_i \cdot \sqrt{\frac{\pi r_i^2 F_n}{G}},\qquad F_n = \frac{h}{c t_1^2},\qquad t_1 = 1\ \text{second}
+    \]</div>
+    <p>Numerically:</p>
+    <div class="equation">\[
+    F_n = \frac{6.62607015\times10^{-34}\ \text{J·s}}{(299,792,458\ \text{m/s})(1\ \text{s})^2} = 2.21022\times10^{-42}\ \text{N}
+    \]</div>
+    <p>We can verify the invariant for each particle:</p>
+    <p><strong>Proton:</strong> \(\kappa_p = \frac{1}{3\alpha^2}\), \(\alpha = 1/137\):</p>
+    <div class="equation">\[
+    t_1 = \frac{0.833\times10^{-15}}{1.67262\times10^{-27}} \cdot \sqrt{\frac{\pi \cdot 6.62607\times10^{-34}}{(6.67430\times10^{-11})(299,792,458)}} \cdot 6256.33 = 1.00500\ \text{seconds}
+    \]</div>
+    <p><strong>Neutron:</strong> \(\kappa_n = \frac{1}{3\alpha^2}\):</p>
+    <div class="equation">\[
+    t_1 = \frac{0.834\times10^{-15}}{1.675\times10^{-27}} \cdot \sqrt{\frac{\pi \cdot 6.62607\times10^{-34}}{(6.67430\times10^{-11})(299,792,458)}} \cdot 6256.33 = 1.00478\ \text{seconds}
+    \]</div>
+    <p><strong>Electron:</strong> \(\kappa_e = 1\):</p>
+    <div class="equation">\[
+    t_1 = \frac{2.81794\times10^{-15}}{9.10938\times10^{-31}} \cdot \sqrt{\frac{\pi \cdot 6.62607\times10^{-34}}{(6.67430\times10^{-11})(299,792,458)}} \cdot 1 = 0.99773\ \text{seconds}
+    \]</div>
+    <p>We suggest \(\kappa_e = 1\) for the electron may be because it is the fundamental quanta (does not consist of further more elementary particles). \(G\) has been rounded to \(6.674\times10^{-11}\). \(r_n = 0.84\times10^{-15}\ \text{m}\) (neutron radius), \(r_e = 2.81794\times10^{-15}\ \text{m}\) (classical electron radius).</p>
+
+    <h3>Further Indication That We Are Correct</h3>
+    <p>I didn’t arrive at all of this by just guessing. I found two equations where the proton radius to its mass produces 1‑second:</p>
+    <div class="equation">\[
+    \left(\sqrt{\phi\cdot\frac{\pi r_p}{\alpha^4 G m_p^3}}\right)\frac{1}{3}\cdot\frac{h}{c}=1\ \text{second}
+    \]</div>
+    <div class="equation">\[
+    \left(\frac{1}{6\alpha^2}\sqrt{\frac{4\pi h}{Gc}}\right)\cdot\frac{r_p}{m_p}=1\ \text{second}
+    \]</div>
+    <p>These two directly yield:</p>
+    <div class="equation">\[
+    m_p = \kappa_p \cdot \sqrt{\frac{\pi r_p^2 F_n}{G}}
+    \]</div>
+    <p>If the proton radius is \(r_p = \phi\cdot\frac{h}{c m_p}\) and \(F_n = \frac{h}{c t_1^2},\ t_1 = 1\) second. We know the two equations are correct because they yield the proton radius accurately if we equate the left‑hand sides. They give it as:</p>
+    <div class="equation">\[
+    r_p \approx \phi\frac{h}{c m_p}
+    \]</div>
+    <p>We know this is correct because it is given by \(E_p = h\nu_p\), \(E_p = m_p c^2\), \(\lambda_p = h/(m_p c) = r_p\): Planck energy, Einstein mass‑energy equivalence, and the Compton wavelength, respectively, if we introduce the factor of \(\phi\).</p>
+    <p>I explain the factor of \(\phi\) by invoking Kristin Tynski [2], her paper titled: <em>One Equation, ~200 Mysteries: A Structural Constraint That May Explain (Almost) Everything</em>. Tynski shows that for any system requiring consistency across multiple scales of observation, the recurrence relation:</p>
+    <div class="equation">\[
+    \text{scale}(n+2) = \text{scale}(n+1) + \text{scale}(n)
+    \]</div>
+    <p>leads to \(\lambda^2 = \lambda + 1\) whose solution is \(\Phi = 1/\phi\). We have:</p>
+    <div class="equation">\[
+    r_p = \phi\cdot\frac{h}{c m_p}
+    \]</div>
+    <div class="equation">\[
+    r_p = (0.618)\cdot\frac{6.62607\times10^{-34}}{(299,792,458)(1.67262\times10^{-27})} = 0.8166\times10^{-15}\ \text{m}
+    \]</div>
+    <p>The CODATA value from the PRad experiment in 2019 gives \(r_p = 0.831\ \text{fm} \pm 0.014\ \text{fm}\) with lower bound \(r_p = 0.817\times10^{-15}\ \text{m}\), which is almost exactly what we obtained. For the proton radius in our computations we use [3]: “A measurement of the atomic hydrogen Lamb shift and the proton charge radius” by Bezginov, N. et al. (<em>Science</em>, Vol. 365, Issue 6457, pp. 1007‑1012, 2019) with value \(r_p = 0.833\ \text{fm} \pm 0.012\ \text{fm}\).</p>
+
+    <!-- References -->
+    <h2>References</h2>
+    <ol class="ref-list">
+        <li>Beardsley, I. (2026). <em>The Curious 1‑Second Structure In Nature, From The Atom To The Solar System</em>. 
+            <a href="https://doi.org/10.5281/zenodo.19456584" target="_blank" rel="noopener noreferrer">https://doi.org/10.5281/zenodo.19456584</a>
+        </li>
+        <li>Tynski, K. (2024). <em>One Equation, ~200 Mysteries: A Structural Constraint That May Explain (Almost) Everything</em>.</li>
+        <li>Bezginov, N., Valdez, T., Horbatsch, M. et al. (York University/Toronto). “A measurement of the atomic hydrogen Lamb shift and the proton charge radius”. <em>Science</em>, Vol. 365, Issue 6457, pp. 1007‑1012 (2019).</li>
+    </ol>
+    <footer>
+        <span>© Ian Beardsley — April 2026</span><br>
+        <span style="font-size:0.75rem;">Built with MathJax | A construct bridging particle physics, cosmology, and the origin of the second.</span>
+    </footer>
+</div>
+</body>
+</html>
+```
+
+
+
+
+<P>******************************************************************************************</P>
+
 September 11, 2025
 
 <h1>Two Crossings On Opposite Sides Of The Earth: Putting Our Ancient Origins In Perspective</h1>
