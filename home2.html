@@ -68,6 +68,417 @@ text-align: center;
 <div id="main">
 <p style="text-align:left;">
 
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>A Universal Particle Equation | Ian Beardsley</title>
+    <!-- MathJax 3 (TeX-AMS_CHTML) for high-quality equation rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']],
+                packages: { '[+]': ['ams', 'text', 'boldsymbol'] },
+                tags: 'ams',
+                macros: {
+                    hbar: "{\\hbar}",
+                    alpha: "{\\alpha}",
+                    phi: "{\\phi}",
+                    kappa: "{\\kappa}"
+                }
+            },
+            options: {
+                ignoreHtmlClass: 'no-mathjax',
+                processHtmlClass: 'math'
+            }
+        };
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #fafaf7;
+            color: #1e1e2a;
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
+            line-height: 1.55;
+            padding: 2rem 1rem;
+        }
+        .paper-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+            border-radius: 18px;
+            padding: 2.2rem 2rem;
+            transition: all 0.2s;
+        }
+        @media (max-width: 680px) {
+            .paper-container {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            padding-left: 0;
+            margin-bottom: 0.25rem;
+            font-family: 'Segoe UI', 'Roboto', Georgia, serif;
+        }
+        .author {
+            font-size: 1.15rem;
+            color: #2c3e4e;
+            margin-top: 0.5rem;
+            margin-bottom: 0.2rem;
+            padding-left: 0;
+            font-style: normal;
+            font-weight: 400;
+        }
+        .date {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #5f6c7a;
+            margin-bottom: 1.5rem;
+            padding-left: 0;
+            border-bottom: 1px solid #e0e4e8;
+            padding-bottom: 0.8rem;
+        }
+        .abstract {
+            background: #f4f8fb;
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
+            border-left: 3px solid #2c7da0;
+        }
+        .abstract strong {
+            color: #1f5068;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 1.6rem 0 0.8rem 0;
+            font-weight: 500;
+            color: #1f5068;
+            border-bottom: 1px solid #d4dee5;
+            padding-bottom: 0.2rem;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.5rem 0;
+            font-weight: 500;
+            color: #2c6e8f;
+        }
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .math, .equation {
+            overflow-x: auto;
+            padding: 0.4rem 0;
+        }
+        .equation {
+            text-align: center;
+            margin: 1.2rem 0;
+        }
+        blockquote {
+            margin: 1rem 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid #9bb7c9;
+            font-style: normal;
+            background: #f8f9fc;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+        }
+        ul, ol {
+            margin: 0.8rem 0 1rem 2rem;
+        }
+        li {
+            margin-bottom: 0.3rem;
+        }
+        .ref-list {
+            margin-top: 1rem;
+            list-style-type: decimal;
+            padding-left: 1.8rem;
+        }
+        .ref-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.92rem;
+        }
+        hr {
+            margin: 2rem 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, #ccc, transparent);
+        }
+        .note {
+            background: #fef7e0;
+            padding: 0.8rem 1.2rem;
+            border-radius: 14px;
+            margin: 1.2rem 0;
+            font-size: 0.9rem;
+        }
+        footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #6c7a89;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+        }
+        a {
+            color: #1f6392;
+            text-decoration: none;
+            border-bottom: 1px dotted #9bb7c9;
+        }
+        a:hover {
+            color: #0e3e5c;
+            border-bottom: 1px solid;
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .paper-container {
+                box-shadow: none;
+                padding: 0.5rem;
+            }
+            .equation {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="paper-container">
+    <h1>A Universal Particle Equation</h1>
+    <div class="author">Ian Beardsley</div>
+    <div class="date"><em>April 11, 2026</em></div>
+
+    <!-- Abstract -->
+    <div class="abstract">
+        <strong>Abstract</strong><br>
+        We present a universal particle equation where what we experience as mass is taken as resistance to changes in a particle's motion through the temporal dimensions, which is measured by \(G\), the universal constant of gravitation. To do this we introduce a normal force given by \(F_n = h/(c t_1^2)\) where \(t_1\) is on the order of \(t_1 = 1\) second, which is Lorentz invariant. The normal force, \(F_n\) is exposed to the cross-sectional area of the particle \(A_i = \pi r_i^2\). The result is the mass of the particle is given by \(m_i = \kappa_i \sqrt{\pi r_i^2 F_n/G}\), with experimental verification giving 1.00500 seconds (proton), 1.00478 seconds (neutron), and 0.99773 seconds (electron). The coupling constant, \(\kappa_i\), is predicted by a prediction for the radius of the proton, which is \(r_p = \phi h/(c m_p)\) with \(1/\phi = \Phi\) where \(\Phi = (\sqrt{5}+1)/2\) is the golden ratio. Thus we have a geometric mechanism for inertia, where we experience mass when we push on it, as resistance to diverting temporal motion into spatial dimensions.
+    </div>
+
+    <!-- Theoretical Framework -->
+    <h2>Theoretical Framework</h2>
+    <p>In special relativity, the invariant spacetime interval is given by:</p>
+    <div class="equation">\[
+    ds^2 = c^2 dt^2 - dx^2 - dy^2 - dz^2
+    \]</div>
+    <p>For an object at rest the motion is entirely in the temporal dimension. As an object acquires spatial velocity, its temporal velocity decreases according to:</p>
+    <div class="equation">\[
+    v_t = \frac{c}{\gamma} = c \sqrt{1 - \frac{v^2}{c^2}}
+    \]</div>
+    <p>where \(\gamma\) is the Lorentz factor. This relationship reveals the hyperbolic nature of spacetime rotations — increasing spatial velocity requires decreasing temporal velocity to maintain the constant magnitude \(c\).</p>
+
+    <h2>The Universal Particle Equation</h2>
+    <p>We introduce two equations that give on the order of 1‑second in terms of the proton radius and mass:</p>
+    <div class="equation">\[
+    \left(\sqrt{\phi\cdot\frac{\pi r_p}{\alpha^4 G m_p^3}}\right)\frac{1}{3}\cdot\frac{h}{c}=1\ \text{second}
+    \]</div>
+    <div class="equation">\[
+    \left(\frac{1}{6\alpha^2}\sqrt{\frac{4\pi h}{Gc}}\right)\cdot\frac{r_p}{m_p}=1\ \text{second}
+    \]</div>
+    <p>
+    \(m_p = 1.67262\times10^{-27}\,\text{kg}\) (Proton Mass) [1]<br>
+    \(r_p = 0.833\times10^{-15}\,\text{m}\) (Proton Radius) [2]<br>
+    \(h = 6.62607\times10^{-34}\,\text{J·s}\) (Planck Constant) [3]<br>
+    \(c = 299,792,458\,\text{m/s}\) (Light Speed) [4]<br>
+    \(G = 6.6730\times10^{-11}\,\text{N·m}^2/\text{kg}^2\) (Universal Gravitational Constant, 2018) [5]<br>
+    \(\alpha = 1/137\) (Fine Structure Constant)<br>
+    \(\phi = (\sqrt{5}-1)/2 \approx 0.618\) (Golden Ratio Conjugate)
+    </p>
+    <p>These will be verified presently. When setting the left side of equation 1 equal to the left side of equation 2, we get an equation for the radius of a proton that is accurate:</p>
+    <div class="equation">\[
+    r_p = \phi\cdot\frac{h}{c m_p}
+    \]</div>
+    <div class="equation">\[
+    r_p = (0.618)\cdot\frac{6.62607\times10^{-34}}{(299,792,458)(1.67262\times10^{-27})} = 0.8166\times10^{-15}\,\text{m}
+    \]</div>
+    <p>The CODATA value from the PRad experiment in 2019 gives \(r_p = 0.831\,\text{fm} \pm 0.014\,\text{fm}\) with lower bound \(r_p = 0.817\times10^{-15}\,\text{m}\), which is almost exactly what we obtained.</p>
+    <p>We can see equation 3 may be the case because we get it from Planck Energy \(E_p = h\nu_p\), Einsteinian energy \(E_p = m_p c^2\), and the Compton wavelength \(\lambda_p = h/(m_p c) = r_p\) when we introduce the factor of \(\phi\), which is the golden ratio conjugate, where the golden ratio \(\Phi = 1/\phi = (\sqrt{5}+1)/2 \approx 1.618\).</p>
+    <p>We explain this factor by invoking Kristin Tynski, her paper titled: <em>One Equation, ~200 Mysteries: A Structural Constraint That May Explain (Almost) Everything</em> [5]. Tynski shows that for any system requiring consistency across multiple scales of observation has the recurrence relation:</p>
+    <div class="equation">\[
+    \text{scale}(n+2) = \text{scale}(n+1) + \text{scale}(n)
+    \]</div>
+    <p>Which leads to:</p>
+    <div class="equation">\[
+    \lambda^2 = \lambda + 1
+    \]</div>
+    <p>Whose solution is \(\Phi\). Equations 1, 2, and 3 directly yield our Universal Particle Equation:</p>
+    <div class="equation">\[
+    m_p = \kappa_p \cdot \sqrt{\frac{\pi r_p^2 F_n}{G}}
+    \]</div>
+    <div class="equation">\[
+    F_n = \frac{h}{c t_1^2}
+    \]</div>
+    <div class="equation">\[
+    t_1 = 1\ \text{second}
+    \]</div>
+    <p>where \(\kappa_p = 1/(3\alpha^2)\). Here we see in equation 3, the cross-sectional area of the proton \(A_p = \pi r_p^2\) is exposed to the normal force \(F_n\) mediated by the 'stiffness of space' as measured by \(G\), producing the proton mass \(m_p\). In general we have</p>
+    <div class="equation">\[
+    m_i = \kappa_i \cdot \sqrt{\frac{\pi r_i^2 F_n}{G}}, \qquad 
+    F_n = \frac{h}{c t_1^2}
+    \]</div>
+    <div class="equation">\[
+    F_n = \frac{6.62607015 \times 10^{-34}\ \text{J·s}}{(299,792,458\ \text{m/s})(1\ \text{s})^2} = 2.21022 \times 10^{-42}\ \text{N}
+    \]</div>
+    <div class="equation">\[
+    m_i = \kappa_i \sqrt{\frac{\pi r_i^2}{G} \cdot \frac{h}{c t_1^2}}
+    \]</div>
+
+    <p>We can verify this solving for \(t_1\) and showing it is, closely, 1‑second:</p>
+    <div class="equation">\[
+    t_1 = \frac{r_i}{m_i} \cdot \sqrt{\frac{\pi h}{Gc}} \cdot \kappa_i
+    \]</div>
+    <p><strong>Proton:</strong> \(\kappa_p = \frac{1}{3\alpha^2}\), \(\alpha = 1/137\):</p>
+    <div class="equation">\[
+    t_1 = \frac{0.833 \times 10^{-15}}{1.67262 \times 10^{-27}} \cdot \sqrt{\frac{\pi \cdot 6.62607 \times 10^{-34}}{(6.674 \times 10^{-11})(299,792,458)}} \cdot 6256.33 = 1.00500\ \text{seconds}
+    \]</div>
+    <p><strong>Neutron:</strong> \(\kappa_n = \frac{1}{3\alpha^2}\):</p>
+    <div class="equation">\[
+    t_1 = \frac{0.834 \times 10^{-15}}{1.675 \times 10^{-27}} \cdot \sqrt{\frac{\pi \cdot 6.62607 \times 10^{-34}}{(6.674 \times 10^{-11})(299,792,458)}} \cdot 6256.33 = 1.00478\ \text{seconds}
+    \]</div>
+    <p><strong>Electron:</strong> \(\kappa_e = 1\):</p>
+    <div class="equation">\[
+    t_1 = \frac{2.81794 \times 10^{-15}}{9.10938 \times 10^{-31}} \cdot \sqrt{\frac{\pi \cdot 6.62607 \times 10^{-34}}{(6.674 \times 10^{-11})(299,792,458)}} \cdot 1 = 0.99773\ \text{seconds}
+    \]</div>
+    <p>We suggest \(\kappa_e = 1\) for the electron may be because it is the fundamental quanta (does not consist of further more elementary particles). \(G\) has been rounded to \(6.674\times10^{-11}\). This is a Natural Law.</p>
+    <p>\(r_n = 0.84\times10^{-15}\,\text{m}\) (Neutron radius) [6]<br>
+    \(r_e = 2.81794\times10^{-15}\,\text{m}\) (Classical electron radius) [7]</p>
+
+    <h2>The Geometric Mechanism of Inertia</h2>
+    <p>As such the geometric mechanism for inertia is that when we apply a force to accelerate a particle spatially, we are rotating its velocity vector, diverting motion from the temporal dimension to spatial dimensions. The normal force \(F_n\) resists this rotation, manifesting as an inertial resistance. \(t_1 = 1\) second given by equation 8 is Lorentz invariant because \(G\), \(c\), and \(h\) are invariant; \(r_p\) is not but the ratio \(r_p/m_p\) is invariant because while \(r_p\) is frame dependent, it is adjusted for by the relativistic mass of \(m_p\).</p>
+
+    <h2>Discussion</h2>
+    <p>The normal force has a relationship to the Planck force, the maximum gravity for the minimum mass. It links the normal force to a full rotation (\(2\pi\)). We have the normal force</p>
+    <div class="equation">\[
+    F_n = \frac{h}{c t_1^2} = 2.21022\times10^{-42}\,\text{N}
+    \]</div>
+    <p>We have the Planck force for gravity</p>
+    <div class="equation">\[
+    F_{\text{Planck}} = G\frac{m_P^2}{l_P^2} = (6.674\times10^{-11})\frac{(2.176434\times10^{-8}\,\text{kg})^2}{(1.616255\times10^{-35}\,\text{m})^2} = 1.21020\times10^{44}\,\text{N}
+    \]</div>
+    <p>Where \(m_P\) is the Planck mass, and \(l_P\) the Planck length:</p>
+    <div class="equation">\[
+    m_P = \sqrt{\frac{\hbar c}{G}} = 2.176434\times10^{-8}\,\text{kg}, \qquad 
+    l_{\text{Planck}} = \sqrt{\frac{\hbar G}{c^3}} = 1.616255\times10^{-35}\,\text{m}
+    \]</div>
+    <p>Planck time is</p>
+    <div class="equation">\[
+    t_{\text{Planck}} = \sqrt{\frac{\hbar G}{c^5}} = 5.391247\times10^{-44}\,\text{s}
+    \]</div>
+    <p>We form the ratios between the normal force and Planck force:</p>
+    <div class="equation">\[
+    \frac{F_n}{F_{\text{Planck}}} = 1.826326\times10^{-86}
+    \]</div>
+    <p>Divide by Planck time squared and we have</p>
+    <div class="equation">\[
+    \frac{F_n}{F_{\text{Planck}}}\frac{1}{t_P^2} = 6.2834743\ \text{s}^{-2}
+    \]</div>
+    <p>That number is \(2\pi\). We have the final equation:</p>
+    <div class="equation">\[
+    t_1 = \sqrt{2\pi\,\frac{F_{\text{Planck}}}{F_n}}\;\cdot\; t_P = 1.00\ \text{seconds}
+    \]</div>
+    <p>From the Planck units we have \(F_{\text{Planck}} = G\frac{m_P^2}{l_P^2} = \frac{c^4}{G}\), so it can be written:</p>
+    <div class="equation">\[
+    t_1 = \sqrt{2\pi\,\frac{c^4}{G F_n}}\;\cdot\; t_P
+    \]</div>
+    <p>We can write</p>
+    <div class="equation">\[
+    F_n = 2\pi\,F_{\text{Planck}}\cdot\frac{t_P^2}{t_1^2}
+    \]</div>
+    <p>\(2\pi\) is a full rotation, so we can define an angular frequency \(\omega\):</p>
+    <div class="equation">\[
+    F_n = F_{\text{Planck}}\cdot t_P^2\cdot\frac{d\omega}{dt}
+    \]</div>
+    <div class="equation">\[
+    \frac{F_n}{F_{\text{Planck}}}\cdot\frac{1}{t_P^2}\int_{0}^{1\ \text{second}} dt = \omega_1
+    \]</div>
+    <div class="equation">\[
+    \omega_1 = \frac{2\pi}{\text{second}}
+    \]</div>
+    <p>Integrating one more time gives the angle over 1‑second:</p>
+    <div class="equation">\[
+    \frac{F_n}{F_{\text{Planck}}}\cdot\frac{t_1}{t_P^2}\int_{0}^{1\ \text{second}} dt = \theta_1
+    \]</div>
+    <div class="equation">\[
+    \frac{F_n}{F_{\text{Planck}}}\cdot\frac{t_1^2}{t_P^2} = \theta_1,\qquad \theta_1 = 2\pi
+    \]</div>
+    <p>Thus, the normal force \(F_n\) is the force that, when scaled by the Planck force and Planck time, gives a full \(2\pi\) angular displacement in one second. This geometric origin explains why \(t_1 = 1\ \text{second}\) appears as a natural invariant. We see the second arises naturally from Planck‑scale physics through a factor of \(\theta_1 = 2\pi\).</p>
+    <blockquote>
+        <em>One second is the time it takes for the ratio \(\frac{F_n}{F_{\text{Planck}}}\) to accumulate a full \(2\pi\) of angular phase, closing a loop in the temporal dimension — out of the temporal and back in again.</em>
+    </blockquote>
+    <p>This is reminiscent of the idea in some quantum gravity or pre‑geometric models that time emerges from a cyclic variable. The equation may be hinting at exactly that: the normal force (which was previously linked to inertia and mass) is the restoring force that makes the cycle close after exactly one second.</p>
+
+    <h2>Conclusion</h2>
+    <p>We have presented a fundamental 1‑second invariant that emerges from the intrinsic properties of elementary particles — the proton, neutron, and electron — and from the fabric of Planck‑scale physics. The invariant is expressed as</p>
+    <div class="equation">\[
+    t_1 = \frac{r_i}{m_i} \sqrt{\frac{\pi h}{Gc}} \;\kappa_i = 1\ \text{second},
+    \]</div>
+    <p>where \(\kappa_p = \kappa_n = 1/(3\alpha^2)\) and \(\kappa_e = 1\).</p>
+    <p>Crucially, the invariant leads to a universal particle equation:</p>
+    <div class="equation">\[
+    m_i = \kappa_i \sqrt{\frac{\pi r_i^2 F_n}{G}}, \qquad 
+    F_n = \frac{h}{c\,t_1^2},
+    \]</div>
+    <p>with \(F_n\) a constant normal force of magnitude \(2.21022\times10^{-42}\,\text{N}\). This equation suggests that the mass of a particle is determined by its cross‑sectional area (\(\pi r_i^2\)), the stiffness of spacetime (\(G\)), and a universal normal force \(F_n\) that arises from the quantum constraint \(t_1 = 1\,\text{s}\).</p>
+    <p>The geometric origin of the second becomes apparent when we relate \(F_n\) to the Planck force \(F_{\text{Planck}} = c^4/G\). We find</p>
+    <div class="equation">\[
+    \frac{F_n}{F_{\text{Planck}}} \cdot \frac{t_1^2}{t_P^2} = 2\pi,
+    \]</div>
+    <p>which means that over one second, the ratio \(F_n/F_{\text{Planck}}\) accumulates exactly \(2\pi\) radians of angular phase — a full rotation. Thus, one second is not an arbitrary human convention but rather the time required for this cyclic closure in the temporal dimension, rooted in Planck‑scale dynamics.</p>
+    <p>In summary, the 1‑second invariant unifies particle physics and fundamental constants through a single, testable relation. The universal particle equation \(m_i = \kappa_i \sqrt{\pi r_i^2 F_n / G}\) provides a new perspective on inertia: mass arises from the resistance to rotating a particle's temporal velocity into spatial velocity, quantified by the normal force \(F_n\). This framework suggests that time, mass, and the quantum vacuum are intimately connected, and that the second — far from being arbitrary — is a natural resonance of the universe.</p>
+
+    <div class="note">
+        <strong>Note</strong><br>
+        The universal particle equation and 1‑second invariant were discovered by the author and reported as early as:<br>
+        Beardsley, Ian (November 29, 2025) <em>The Geometric Origin of Inertia: Mass Generation from Temporal Motion in Hyperbolic Spacetime</em>, <a href="https://doi.org/10.5281/zenodo.17772255" target="_blank" rel="noopener noreferrer">https://doi.org/10.5281/zenodo.17772255</a><br>
+        Beardsley, I. (2026). <em>A Spacetime Theory For Inertia; Predicting The Proton, Electron, Neutron and the Solar System in Terms of a One-Second Invariant</em>, <a href="https://doi.org/10.5281/zenodo.18165383" target="_blank" rel="noopener noreferrer">https://doi.org/10.5281/zenodo.18165383</a>
+    </div>
+
+    <h2>References</h2>
+    <ol class="ref-list">
+        <li>Tiesinga, Eite, Peter J. Mohr, David B. Newell, and Barry N. Taylor. "CODATA Value: Proton Mass." The 2022 CODATA Recommended Values of the Fundamental Physical Constants (Web Version 9.0). National Institute of Standards and Technology, 2024. <a href="https://physics.nist.gov/cgi-bin/cuu/Value?mp" target="_blank" rel="noopener noreferrer">https://physics.nist.gov/cgi-bin/cuu/Value?mp</a></li>
+        <li>Bezginov, N., Valdez, T., Horbatsch, M. et al. (York University/Toronto). "A measurement of the atomic hydrogen Lamb shift and the proton charge radius". <em>Science</em>, Vol. 365, Issue 6457, pp. 1007‑1012 (2019).</li>
+        <li>Tiesinga, Eite, Peter J. Mohr, David B. Newell, and Barry N. Taylor. "CODATA Value: Planck Constant." The 2022 CODATA Recommended Values of the Fundamental Physical Constants (Web Version 9.0). National Institute of Standards and Technology, 2024. <a href="https://physics.nist.gov/cgi-bin/cuu/Value?h" target="_blank" rel="noopener noreferrer">https://physics.nist.gov/cgi-bin/cuu/Value?h</a></li>
+        <li>Tiesinga, Eite, Peter J. Mohr, David B. Newell, and Barry N. Taylor. "CODATA Value: Speed of Light in Vacuum." The 2022 CODATA Recommended Values of the Fundamental Physical Constants (Web Version 9.0). National Institute of Standards and Technology, 2024. <a href="https://physics.nist.gov/cgi-bin/cuu/Value?c" target="_blank" rel="noopener noreferrer">https://physics.nist.gov/cgi-bin/cuu/Value?c</a></li>
+        <li>Tynski, K. (2024). <em>One Equation, ~200 Mysteries: A Structural Constraint That May Explain (Almost) Everything</em>.</li>
+        <li>Kubon, G., Anklin, H., Bartsch, P., Baumann, D., Boeglin, W. U., Bohinc, K., ... & Zihlmann, B. (2002). Precise neutron magnetic form factors. <em>Physics Letters B</em>, <strong>524</strong>(1-2), 26-32.</li>
+        <li>NIST CODATA Value for the Classical Electron Radius (2022).</li>
+    </ol>
+
+    <footer>
+        <span>© Ian Beardsley — April 2026</span><br>
+        <span style="font-size:0.75rem;">Built with MathJax | A geometric theory of inertia and the universal particle equation.</span>
+    </footer>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+<p>******************************************************************************************</p>
+
+
 April 11, 2026
 
 
